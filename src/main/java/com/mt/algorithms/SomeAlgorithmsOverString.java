@@ -30,11 +30,11 @@ public class SomeAlgorithmsOverString {
 	}
 
 	public static String reverseString(String s) {
-		String reverse = "";
+		StringBuilder reverse = new StringBuilder();
 		for (int i = 0; i < s.length(); i++) {
-			reverse = s.charAt(i) + reverse;
+			reverse.insert(0, s.charAt(i));
 		}
-		return reverse;
+		return reverse.toString();
 	}
 
 	public static Map<Character, Integer> countNumberOfCharacters(String s) {

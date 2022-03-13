@@ -228,16 +228,16 @@ public class SomeAlgorithmsOverArray {
 	public static int tankCapacity(int[] array) {
 
 		int maxArea = 0;
-		int i = 0;
-		int j = array.length - 1;
+		int indexFromStart = 0;
+		int indexFromEnd = array.length - 1;
 
-		while (i < j) {
-			int currentArea = (j - i) * Math.min(array[i], array[j]);
+		while (indexFromStart < indexFromEnd) {
+			int currentArea = (indexFromEnd - indexFromStart) * Math.min(array[indexFromStart], array[indexFromEnd]);
 			maxArea = Math.max(currentArea, maxArea);
-			if (array[i] < array[j]) {
-				i++;
+			if (array[indexFromStart] < array[indexFromEnd]) {
+				indexFromStart++;
 			} else {
-				j--;
+				indexFromEnd--;
 			}
 		}
 
