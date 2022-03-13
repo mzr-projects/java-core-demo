@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class User implements Comparable<User> {
-	
+
 	private String name;
 	private String email;
 
