@@ -9,14 +9,14 @@ public class JavaCollectionsApp {
 		userList.add(new User("MT", "mt@gmail.com"));
 		userList.add(new User("GT", "gt@gmail.com"));
 		userList.add(new User("HT", "ht@gmail.com"));
-		userList.forEach((element) -> System.out.println(element));
+		userList.forEach(System.out::println);
 
 		System.out.println("======================= LinkedList");
 		List<User> userLinkedList = new LinkedList<>();
 		userLinkedList.add(new User("MT", "mt@gmail.com"));
 		userLinkedList.add(new User("GT", "gt@gmail.com"));
 		userLinkedList.add(new User("HT", "ht@gmail.com"));
-		userLinkedList.forEach((element) -> System.out.println(element));
+		userLinkedList.forEach(System.out::println);
 
 		System.out.println("======================= HashSet");
 		Set<User> userHashSet = new HashSet<>();
@@ -26,14 +26,14 @@ public class JavaCollectionsApp {
 		userHashSet.add(new User("FT", "FT@gmail.com"));
 		userHashSet.add(new User("PT", "PT@gmail.com"));
 		userHashSet.add(new User("YT", "YT@gmail.com"));
-		userHashSet.forEach((element) -> System.out.println(element));
+		userHashSet.forEach(System.out::println);
 
 		System.out.println("======================= LinkedHashSet");
 		Set<User> userLinkedHashSet = new LinkedHashSet<>();
 		userLinkedHashSet.add(new User("MT", "mt@gmail.com"));
 		userLinkedHashSet.add(new User("GT", "gt@gmail.com"));
 		userLinkedHashSet.add(new User("HT", "ht@gmail.com"));
-		userLinkedHashSet.forEach((element) -> System.out.println(element));
+		userLinkedHashSet.forEach(System.out::println);
 
 		System.out.println("======================= TreeSet");
 		Set<User> userTreeSet = new TreeSet<>();
