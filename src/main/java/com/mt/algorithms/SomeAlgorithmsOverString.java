@@ -1,40 +1,18 @@
 package com.mt.algorithms;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SomeAlgorithmsOverString {
 	public static void main(String[] args) {
-		System.out.println("==================== Reverse String");
-		System.out.println("Reverse of : " + reverseString("Hello"));
-
-		System.out.println("==================== Number of characters in String");
-		System.out.println("Number of characters in : 'Hey bro trust me goddamn it' : ");
-		countNumberOfCharacters("Hey bro trust me goddamn it");
-		if (areTwoStringsAnagrams("mymoan", "manmyo")) {
-			System.out.println("Tow strings are anagram");
-		} else {
-			System.out.println("Tow strings are not anagram");
-		}
-
-		System.out.println("==================== First Non-Repeated Character");
-		System.out.println(firstNonRepeatedCharacter("avcfcvda"));
-
-		System.out.println("==================== String with Unique Characters");
-		System.out.println(hasStringUniqueCharacter("abcdesw"));
-
-		System.out.println("==================== Min Distance");
-		System.out.println("Min distance is : " + minDistance("Anshuman", "Antihuman"));
-		System.out.println("Min distance is : " + minDistance("abad", "abac"));
 	}
 
-	public static String reverseString(String s) {
-		StringBuilder reverse = new StringBuilder();
-		for (int i = 0; i < s.length(); i++) {
-			reverse.insert(0, s.charAt(i));
+	public static boolean areTwoStringsAnagrams(String str1, String str2) {
+
+		if (str1.length() != str2.length()) {
+			return false;
 		}
-		return reverse.toString();
+
+		return countNumberOfCharacters(str1).equals(countNumberOfCharacters(str2));
 	}
 
 	public static Map<Character, Integer> countNumberOfCharacters(String s) {
@@ -53,15 +31,6 @@ public class SomeAlgorithmsOverString {
 		}
 
 		return numberOfCharacters;
-	}
-
-	public static boolean areTwoStringsAnagrams(String str1, String str2) {
-
-		if (str1.length() != str2.length()) {
-			return false;
-		}
-
-		return countNumberOfCharacters(str1).equals(countNumberOfCharacters(str2));
 	}
 
 	public static char firstNonRepeatedCharacter(String str) {
@@ -126,5 +95,24 @@ public class SomeAlgorithmsOverString {
 		} else {
 			return -1;
 		}
+	}
+
+	public static String reverseString(String str) {
+		StringBuilder reverse = new StringBuilder();
+		for (int i = 0; i < str.length(); i++) {
+			reverse.insert(0, str.charAt(i));
+		}
+		return reverse.toString();
+	}
+
+	public static String reverseSentence(String str) {
+		String[] words = str.split(" ");
+		List<String> reversed = new ArrayList<>();
+
+		for (int i = words.length - 1; i >= 0; i--) {
+			reversed.add(words[i]);
+		}
+
+		return String.join(" ", reversed);
 	}
 }

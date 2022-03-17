@@ -1,30 +1,66 @@
 package com.mt;
 
 
-import com.mt.algorithms.SomeAlgorithmsOverArray;
+import com.mt.algorithms.SomeAlgorithmsOverString;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit test for simple App.
  */
 class StringAlgorithmsTests {
 
-	/**
-	 * Rigorous Test :-)
-	 */
 	@Test
-	void shouldAnswerWithTrue() {
-		int nth = SomeAlgorithmsOverArray.findNthLargestElement(new int[]{4, 8, 10, 5, 2, 20, 12, 14}, 5);
-		assertEquals(nth, 8);
+	void reverseString() {
+		String reversed = SomeAlgorithmsOverString.reverseString("Hello");
+		assertEquals("olleH", reversed);
 	}
 
 	@Test
-	void distinctSequence() {
-		int distNumber = SomeAlgorithmsOverArray.numDistinct("rabbbit", "rabbit");
-		int distNumber_2 = SomeAlgorithmsOverArray.numDistinct("abc", "abc");
-		assertEquals(distNumber, 3);
-		assertEquals(distNumber_2, 1);
+	void reverseSentence() {
+		String reversedSentence = SomeAlgorithmsOverString.reverseSentence("Hi My name is Maziar");
+		assertEquals("Maziar is name My Hi", reversedSentence);
+	}
+
+	@Test
+	void countNumberOfCharacters() {
+		Map<Character, Integer> cIMap = SomeAlgorithmsOverString.countNumberOfCharacters("Hello");
+		Map<Character, Integer> ciMap_Expected = new HashMap<>();
+		ciMap_Expected.put('H', 1);
+		ciMap_Expected.put('e', 1);
+		ciMap_Expected.put('o', 1);
+		ciMap_Expected.put('l', 2);
+		assertEquals(ciMap_Expected, cIMap);
+	}
+
+	@Test
+	void anagrams() {
+		boolean isAnagram = SomeAlgorithmsOverString.areTwoStringsAnagrams("mymoan", "manmyo");
+		assertEquals(true, isAnagram);
+	}
+
+	@Test
+	void firstNonRepeatedCharacter() {
+		char actualChar = SomeAlgorithmsOverString.firstNonRepeatedCharacter("avcfcvda");
+		assertEquals('f', actualChar);
+	}
+
+	@Test
+	void hasStringUniqueCharacters() {
+		assertTrue(SomeAlgorithmsOverString.hasStringUniqueCharacter("abcdesw"));
+	}
+
+	@Test
+	void minDistance() {
+		int minD_1 = SomeAlgorithmsOverString.minDistance("Anshuman", "Antihuman");
+		assertEquals(2, minD_1);
+
+		int minD_2 = SomeAlgorithmsOverString.minDistance("abad", "abac");
+		assertEquals(1, minD_2);
 	}
 }
