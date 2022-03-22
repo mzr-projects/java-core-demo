@@ -4,6 +4,7 @@ import java.util.*;
 
 public class SomeAlgorithmsOverString {
 	public static void main(String[] args) {
+		// TODO document why this method is empty
 	}
 
 	public static boolean areTwoStringsAnagrams(String str1, String str2) {
