@@ -27,6 +27,15 @@ public class Outer {
 	}
 
 	/**
+	 * tatic inner class can not access non static attributes
+	 */
+	public static class innerStatic {
+		public void innerStaticMethod() {
+			System.out.println("Static inner class can not access non static attributes");
+		}
+	}
+
+	/**
 	 * Inner class has access to private attributes and methods of outer class
 	 */
 	private class PrivateInner {
