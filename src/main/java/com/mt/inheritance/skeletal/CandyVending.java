@@ -1,7 +1,5 @@
 package com.mt.inheritance.skeletal;
 
-import com.mt.inheritance.A;
-
 public class CandyVending implements IVending {
 
 	private static class AbstractVendingDelegator extends AbstractVending {

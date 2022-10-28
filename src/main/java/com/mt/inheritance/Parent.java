@@ -1,11 +1,11 @@
 package com.mt.inheritance;
 
-public class A {
+public class Parent {
 
-	private int size;
+	private final int size;
 
-	public A(int size) {
-		System.out.println("We are in A constructor");
+	public Parent(int size) {
+		System.out.println("We are in Parent constructor");
 		this.size = size;
 	}
 
