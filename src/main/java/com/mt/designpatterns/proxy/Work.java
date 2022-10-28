@@ -1,4 +1,4 @@
-package com.mt.designPatterns.proxy;
+package com.mt.designpatterns.proxy;
 
 public interface Work {
 	void doSomething();

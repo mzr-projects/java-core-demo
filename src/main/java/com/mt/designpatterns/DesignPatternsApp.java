@@ -1,9 +1,9 @@
-package com.mt.designPatterns;
+package com.mt.designpatterns;
 
-import com.mt.designPatterns.proxy.RealObjectProxy;
-import com.mt.designPatterns.proxy.RealObject;
-import com.mt.designPatterns.singleton.SingletonBillPugh;
-import com.mt.designPatterns.singleton.SingletonLazyLoading;
+import com.mt.designpatterns.proxy.RealObject;
+import com.mt.designpatterns.proxy.RealObjectProxy;
+import com.mt.designpatterns.singleton.SingletonBillPugh;
+import com.mt.designpatterns.singleton.SingletonLazyLoading;
 
 public class DesignPatternsApp {
 	public static void main(String[] args) {

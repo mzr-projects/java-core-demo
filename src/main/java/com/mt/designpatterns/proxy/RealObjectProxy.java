@@ -1,4 +1,4 @@
-package com.mt.designPatterns.proxy;
+package com.mt.designpatterns.proxy;
 
 public class RealObjectProxy extends RealObject {
 	@Override

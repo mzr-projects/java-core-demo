@@ -1,4 +1,4 @@
-package com.mt.designPatterns.singleton;
+package com.mt.designpatterns.singleton;
 
 public class SingletonBillPugh {
 
