@@ -18,7 +18,7 @@ public class StreamsApp {
 		System.out.println(joinUpperCase);
 
 		System.out.println("=========== Total length");
-		int totalLength = stringsFromStream.stream().collect(Collectors.summingInt(String::length));
+		int totalLength = stringsFromStream.stream().mapToInt(String::length).sum();
 		System.out.println(totalLength);
 
 
