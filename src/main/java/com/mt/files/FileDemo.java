@@ -1,7 +1,6 @@
-package com.mt.innerclasses;
+package com.mt.files;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Objects;
 
 public class FileDemo {
@@ -17,12 +16,7 @@ public class FileDemo {
 		}
 
 		System.out.println("========== Anonymous InnerClass Only text files");
-		for (String name : file.list(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.endsWith(".txt");
-			}
-		})) {
+		for (String name : Objects.requireNonNull(file.list((dir, name) -> name.endsWith(".txt")))) {
 			System.out.println(name);
 		}
 	}

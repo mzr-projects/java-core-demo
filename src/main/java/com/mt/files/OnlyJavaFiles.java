@@ -1,4 +1,4 @@
-package com.mt.innerclasses;
+package com.mt.files;
 
 import java.io.File;
 import java.io.FilenameFilter;
