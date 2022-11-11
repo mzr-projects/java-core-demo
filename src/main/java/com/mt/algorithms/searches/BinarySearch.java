@@ -14,19 +14,22 @@ public class BinarySearch<T extends Number & Comparable<T>> {
     public T findElement(List<T> data, T element) {
 
         int dataSize = data.size();
-        int start = 0;
-        int centerElement = dataSize / 2;
+        int centerIndex;
+        int startIndex = 0;
+        int counter = 0;
         T theElement = null;
 
-        for (int i = centerElement; i < dataSize; i++) {
-            System.out.println("iteration No," + i);
-            if (data.get(i).equals(element)) {
-                theElement = data.get(i);
+        while (startIndex <= dataSize) {
+            System.out.println("iteration No," + counter++);
+
+            centerIndex = (startIndex + dataSize) / 2;
+            if (data.get(centerIndex).equals(element)) {
+                theElement = data.get(centerIndex);
                 break;
-            } else if (data.get(i).compareTo(element) > 0) {
-                dataSize = centerElement - 1;
-            } else {
-                start = centerElement + 1;
+            } else if (data.get(centerIndex).compareTo(element) < 0) {
+                startIndex = centerIndex + 1;
+            } else if (data.get(centerIndex).compareTo(element) > 0) {
+                dataSize = centerIndex - 1;
             }
         }
 
