@@ -5,18 +5,18 @@ import java.util.List;
 /*
  * In Binary search the data must be sorted
  * */
-public class BinarySearch<T extends Number & Comparable<T>> {
+public class BinarySearch<T extends Comparable<T>> {
 
     private static <T> List<T> sortData(List<T> data) {
         return null;
     }
 
-    public T findElement(List<T> data, T element) {
+    public T findElementBinarySearch(List<T> data, T element) {
 
         int dataSize = data.size();
         int centerIndex;
         int startIndex = 0;
-        int counter = 0;
+        int counter = 1;
         T theElement = null;
 
         while (startIndex <= dataSize) {
@@ -34,5 +34,18 @@ public class BinarySearch<T extends Number & Comparable<T>> {
         }
 
         return theElement;
+    }
+
+    public T findElementBinarySearchRecursive(List<T> list, T element, int startIndex) {
+        int dataSize = list.size();
+
+        if (list.get(startIndex).equals(element))
+            return list.get(startIndex);
+        else if (list.get(startIndex).compareTo(element) < 0)
+            return findElementBinarySearchRecursive(list, element, ((startIndex + dataSize) / 2) + 1);
+        else if (list.get(startIndex).compareTo(element) > 0)
+            return findElementBinarySearchRecursive(list, element, ((startIndex + dataSize) / 2) - 1);
+        else
+            return null;
     }
 }
