@@ -1,6 +1,7 @@
-package com.mt.inheritance.liskov;
+package com.mt.solid.liskov;
 
 public class LiskovApp {
+
     public static void main(String[] args) {
 
         Vehicle v1 = new Vehicle("VEHICLE", 20);

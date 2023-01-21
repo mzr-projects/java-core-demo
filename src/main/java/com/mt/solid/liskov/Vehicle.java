@@ -1,4 +1,4 @@
-package com.mt.inheritance.liskov;
+package com.mt.solid.liskov;
 
 public class Vehicle {
     private String name;
