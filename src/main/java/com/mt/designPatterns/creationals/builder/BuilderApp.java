@@ -1,4 +1,4 @@
-package com.mt.designPatterns.builder;
+package com.mt.designPatterns.creationals.builder;
 
 public class BuilderApp {
 

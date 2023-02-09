@@ -2,10 +2,10 @@ package com.mt.designPatterns;
 
 import com.mt.designPatterns.proxy.RealObject;
 import com.mt.designPatterns.proxy.RealObjectProxy;
-import com.mt.designPatterns.singleton.SingletonBillPugh;
-import com.mt.designPatterns.singleton.SingletonLazyLoading;
+import com.mt.designPatterns.creationals.singleton.SingletonBillPugh;
+import com.mt.designPatterns.creationals.singleton.SingletonLazyLoading;
 
-public class designPatternsApp {
+public class DesignPatternsApp {
 	public static void main(String[] args) {
 		System.out.println("================= Singleton  (Lazy Loading)");
 		SingletonLazyLoading singletonLazyLoading = SingletonLazyLoading.getInstance();

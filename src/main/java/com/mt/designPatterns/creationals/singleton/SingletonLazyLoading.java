@@ -1,4 +1,4 @@
-package com.mt.designPatterns.singleton;
+package com.mt.designPatterns.creationals.singleton;
 
 import java.io.Serial;
 import java.io.Serializable;
