@@ -24,4 +24,9 @@ public class Movie implements IPrototype {
         System.out.println("Cloning Movie object ...");
         return (Movie) super.clone();
     }
+
+    @Override
+    public void addEntertainment() {
+        System.out.println("Movie with name : " + getName() + " added.");
+    }
 }

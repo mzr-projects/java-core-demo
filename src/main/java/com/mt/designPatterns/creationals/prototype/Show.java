@@ -24,4 +24,9 @@ public class Show implements IPrototype {
         System.out.println("Cloning Show object ...");
         return (Show) super.clone();
     }
+
+    @Override
+    public void addEntertainment() {
+        System.out.println("Show with name : " + getName() + " added.");
+    }
 }
