@@ -10,11 +10,11 @@ public class PrototypeBuilder {
         public static final String MOVIE = "movie";
     }
 
-    private static Map<String, IPrototype> prototypeMap = new HashMap<>();
+    private static final Map<String, IPrototype> prototypeMap = new HashMap<>();
 
     static {
-        prototypeMap.put(ModelType.SHOW, new Show());
-        prototypeMap.put(ModelType.MOVIE, new Movie());
+        prototypeMap.put(ModelType.SHOW, new Show("Late Shows"));
+        prototypeMap.put(ModelType.MOVIE, new Movie("Drama"));
     }
 
     public static IPrototype getInstance(final String s) throws CloneNotSupportedException {

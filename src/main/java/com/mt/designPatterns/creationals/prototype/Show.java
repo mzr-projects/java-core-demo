@@ -2,15 +2,12 @@ package com.mt.designPatterns.creationals.prototype;
 
 public class Show implements IPrototype {
 
-    private String name;
+    private final String name;
 
-    public void setName(String name) {
+    public Show(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
 
     @Override
     public String toString() {
@@ -27,6 +24,6 @@ public class Show implements IPrototype {
 
     @Override
     public void addEntertainment() {
-        System.out.println("Show with name : " + getName() + " added.");
+        System.out.println("Show with name : " + this.name + " added.");
     }
 }
