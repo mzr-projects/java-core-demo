@@ -1,4 +1,4 @@
-package com.mt.designPatterns.proxy;
+package com.mt.designPatterns.structural.proxy;
 
 public class RealObject implements Work {
 

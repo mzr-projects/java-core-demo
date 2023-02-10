@@ -1,7 +1,7 @@
 package com.mt.designPatterns;
 
-import com.mt.designPatterns.proxy.RealObject;
-import com.mt.designPatterns.proxy.RealObjectProxy;
+import com.mt.designPatterns.structural.proxy.RealObject;
+import com.mt.designPatterns.structural.proxy.RealObjectProxy;
 import com.mt.designPatterns.creationals.singleton.SingletonBillPugh;
 import com.mt.designPatterns.creationals.singleton.SingletonLazyLoading;
 
