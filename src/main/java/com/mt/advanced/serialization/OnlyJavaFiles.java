@@ -1,4 +1,4 @@
-package com.mt.advanced.files;
+package com.mt.advanced.serialization;
 
 import java.io.File;
 import java.io.FilenameFilter;

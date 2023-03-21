@@ -1,4 +1,4 @@
-package com.mt.advanced.files;
+package com.mt.advanced.serialization;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -12,7 +12,7 @@ public class ObjectInputDemoApp {
          * Declare each object separately inside the try with resource block
          * */
         try (
-                FileInputStream fis = new FileInputStream("object.bin");
+                FileInputStream fis = new FileInputStream("alienObject.bin");
                 ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(fis))
         ) {
             Object obj;
