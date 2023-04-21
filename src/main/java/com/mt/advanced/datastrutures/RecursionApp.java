@@ -1,4 +1,4 @@
-package com.mt.datastrutures;
+package com.mt.advanced.datastrutures;
 
 public class RecursionApp {
 	public static void main(String[] args) {

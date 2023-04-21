@@ -1,4 +1,4 @@
-package com.mt.date;
+package com.mt.advanced.date;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
