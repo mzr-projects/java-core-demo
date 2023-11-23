@@ -1,30 +1,14 @@
 package com.mt.designPatterns.creationals.builder;
 
+import lombok.Getter;
+
+@Getter
 public class AirCraft {
 
-    private String engine;
-
-    private String wings;
-
-    private String bathRoom;
-
-    private String cockPit;
-
-    public String getEngine() {
-        return engine;
-    }
-
-    public String getWings() {
-        return wings;
-    }
-
-    public String getBathRoom() {
-        return bathRoom;
-    }
-
-    public String getCockPit() {
-        return cockPit;
-    }
+    private final String engine;
+    private final String wings;
+    private final String bathRoom;
+    private final String cockPit;
 
     private AirCraft(AirCraftBuilder airCraftBuilder) {
         this.engine = airCraftBuilder.engine;
@@ -46,11 +30,8 @@ public class AirCraft {
     static class AirCraftBuilder {
 
         private String engine;
-
         private String wings;
-
         private String bathRoom;
-
         private String cockPit;
 
         public AirCraftBuilder(String engine, String wings, String cockPit) {

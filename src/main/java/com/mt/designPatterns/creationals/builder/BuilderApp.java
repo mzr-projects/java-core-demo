@@ -6,7 +6,6 @@ public class BuilderApp {
         AirCraft f16 = new AirCraft
                 .AirCraftBuilder("NEW ONE", "V-Shape", "Fighter")
                 .build();
-
         System.out.println("F-16 is : " + f16.toString());
 
         AirCraft passengerPlane = new AirCraft
