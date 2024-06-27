@@ -28,7 +28,8 @@ public class FutureApp {
                 throw new RuntimeException(e);
             }
         }
-        log.info("Result of Future is : " + future.get());
+
+        log.info(STR."Result of Future is : \{future.get()}");
         //futureExecutor.shutdown();
 
         SumCalculator sumCalculator = new SumCalculator();
@@ -42,6 +43,6 @@ public class FutureApp {
          * get() will block the execution until the task is complete but here the get() is called after making sure
          * the result is ready so we're good here
          * */
-        log.info("Sum : " + integerFuture.get());
+        log.info(STR."Sum : \{integerFuture.get()}");
     }
 }
