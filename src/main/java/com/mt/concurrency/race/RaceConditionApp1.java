@@ -50,7 +50,8 @@ public class RaceConditionApp1 {
          * C3: N = Temp2 (n=4)
          * C4: N = Temp1 (n=6)
          *
-         * The current value of n is 6 that is incorrect it must be 5 because we have 1 increment of 5 and 1 subtraction
+         * The current value of n is 6
+         * that is incorrect it must be 5 because we have 1 increment of 5 and 1 subtractions,
          * but because of race condition we got the wrong answer
          *
          * In other words, n = n + 1 is not atomic (Un-Interruptible)

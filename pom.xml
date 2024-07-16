@@ -23,22 +23,6 @@
             <version>3.14.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.microsoft.gctoolkit</groupId>
-            <artifactId>gctoolkit-api</artifactId>
-            <version>3.0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.gctoolkit</groupId>
-            <artifactId>gctoolkit-parser</artifactId>
-            <version>3.0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.gctoolkit</groupId>
-            <artifactId>gctoolkit-vertx</artifactId>
-            <version>3.0.4</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -65,6 +49,12 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.10.2</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
