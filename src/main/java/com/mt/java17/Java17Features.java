@@ -1,10 +1,16 @@
 package com.mt.java17;
 
+import com.mt.java17.records.*;
+import com.mt.java17.sealed.Shape;
+import com.mt.java17.sealed.Square;
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 
+@Slf4j
 public class Java17Features {
 
     public static void main(String[] args) {
@@ -17,21 +23,21 @@ public class Java17Features {
          * */
 
         /*
-         * For lambda expressions we can not assign the result to a var because its a must for java compiler to know
+         * For lambda expressions, we cannot assign the result to a var because its a must for java compiler to know
          * about the TYPE of fn
          *         String s = "abc";
          *         var fn = ss -> s.length();
          * */
 
         /*
-         * We can use var :
-         * 1.    If the right hand side is a call to a constructor or a static factory method
+         * We can use var:
+         * 1.    If the right-hand side is a call to a constructor or a static factory method
          * 2.    If the scope and usage of the local variable is short and simple
          * 3.    If variables have names that already indicate their types
          * */
 
         var i = 2;
-        System.out.println("var i = " + i);
+        log.info(STR."var i = \{i}");
 
         var lambdaFunction = new Function<String, Integer>() {
             @Override
@@ -39,13 +45,13 @@ public class Java17Features {
                 return 2;
             }
         };
-        System.out.println("Function in var : " + lambdaFunction.apply("2"));
+        log.info(STR."Function in var : \{lambdaFunction.apply("2")}");
 
         var string = """
                 select * from customers where name = 'MT'
                 and id = 1
                 """;
-        System.out.println("Sql in string java 17 : " + string);
+        log.info(STR."Sql in string java 17 : \{string}");
 
         /*
          * Records
@@ -53,26 +59,17 @@ public class Java17Features {
         record Customer(Integer id, String name) {
         }
         var customer = new Customer(1, "Jimmy");
-        System.out.println("Customer name is : " + customer.name + " ," + " Customer id is : " + customer.id);
+        log.info(STR."Customer name is : \{customer.name} , Customer id is : \{customer.id}");
 
-        RecordSampleBase recordSampleBase1 = new RecordSampleBase("ME", 1);
-        RecordSampleBase recordSampleBase2 = new RecordSampleBase("MET", 1);
-        RecordSampleBase recordSampleBase3 = new RecordSampleBase("MTE", 11);
-        RecordSample recordSample1 = new RecordSample(recordSampleBase1, "GG");
-        RecordSample recordSample2 = new RecordSample(recordSampleBase2, "NT");
-        RecordSample recordSample3 = new RecordSample(recordSampleBase3, "BG");
+        Set<RecordSample> sampleSet = getRecordSamples();
 
-        Set<RecordSample> sampleSet = new HashSet<>();
-        sampleSet.add(recordSample1);
-        sampleSet.add(recordSample2);
-        sampleSet.add(recordSample3);
-
-        System.out.println("Records is set : " + sampleSet);
+        log.info(STR."Records is set : \{sampleSet}");
 
         MarketOrder marketOrder = new MarketOrder(1, LocalDateTime.now());
         LimitOrder limitOrder = new LimitOrder(5, 34.87, LocalDateTime.now());
 
-        System.out.println(((Order) marketOrder).units());
+        log.info("Market order unit: {}", ((Order) marketOrder).units());
+        log.info("Limit order unit: {}", limitOrder.units());
 
         /*
          * Sealed Classes
@@ -85,67 +82,31 @@ public class Java17Features {
         myShape.identify();
 
         var shapeObject = (Object) new Square();
-        if (shapeObject instanceof Shape shapeTemp) {
-            shapeTemp.identify();
-        }
+        Shape shapeTemp = (Shape) shapeObject;
+        shapeTemp.identify();
 
-        Object o = "fgdsgsdg";
+        Object o = "It's a string";
         var msg = switch (o) {
-            case String ss -> ss + " is string";
-            case Integer ii -> "Integer : " + ii;
+            case String ss -> STR."\{ss} is string";
+            case Integer ii -> STR."Integer : \{ii}";
             case null, default -> "Not String or Integer";
         };
-        System.out.println(msg);
+
+        log.info(msg);
     }
-}
 
-/*
- * Here we defined what sub-types this shape interface is going to have (Circle,Rectangle)
- * */
-sealed interface Shape permits Circle, Rectangle {
-    default void identify() {
-        System.out.println("I am a " + getClass().getName());
+    private static Set<RecordSample> getRecordSamples() {
+        RecordSampleBase recordSampleBase1 = new RecordSampleBase("ME", 1);
+        RecordSampleBase recordSampleBase2 = new RecordSampleBase("MET", 1);
+        RecordSampleBase recordSampleBase3 = new RecordSampleBase("MTE", 11);
+        RecordSample recordSample1 = new RecordSample(recordSampleBase1, "GG");
+        RecordSample recordSample2 = new RecordSample(recordSampleBase2, "NT");
+        RecordSample recordSample3 = new RecordSample(recordSampleBase3, "BG");
+
+        Set<RecordSample> sampleSet = new HashSet<>();
+        sampleSet.add(recordSample1);
+        sampleSet.add(recordSample2);
+        sampleSet.add(recordSample3);
+        return sampleSet;
     }
-}
-
-sealed interface Rectangle extends Shape permits Square {
-
-}
-
-final class Square implements Rectangle {
-
-}
-
-final class Circle implements Shape {
-
-}
-
-record RecordSample(RecordSampleBase recordSampleBase, String address) {
-
-}
-
-record RecordSampleBase(String name, int age) {
-    public RecordSampleBase {
-        if (name.equals("MT")) {
-            throw new IllegalArgumentException("Name must not be MT");
-        }
-
-        if (age < 0) {
-            throw new IllegalArgumentException("Age must be a positive number");
-        }
-    }
-}
-
-sealed interface Order permits MarketOrder, LimitOrder {
-    int units();
-
-    LocalDateTime sentAt();
-}
-
-record MarketOrder(int units, LocalDateTime sentAt) implements Order {
-
-}
-
-record LimitOrder(int units, double price, LocalDateTime sentAt) implements Order {
-
 }
