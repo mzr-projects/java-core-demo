@@ -1,5 +1,10 @@
 package com.mt.designPatterns.creationals.factory.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public abstract class Plane {
 
     private PlaneType model;
@@ -14,11 +19,4 @@ public abstract class Plane {
         System.out.println("We're building a plane ...");
     }
 
-    public PlaneType getModel() {
-        return model;
-    }
-
-    public void setModel(PlaneType model) {
-        this.model = model;
-    }
 }

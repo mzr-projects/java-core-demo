@@ -71,6 +71,9 @@ public class Java17Features {
         log.info("Market order unit: {}", ((Order) marketOrder).units());
         log.info("Limit order unit: {}", limitOrder.units());
 
+        int tempUnit = limitOrder.addToUnit(1);
+        log.info("Limit order unit after addition: {}", tempUnit);
+
         /*
          * Sealed Classes
          * */
