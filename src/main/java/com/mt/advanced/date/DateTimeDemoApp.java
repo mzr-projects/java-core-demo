@@ -24,14 +24,14 @@ public class DateTimeDemoApp {
         Date localDateTime = new Date();
         DateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         s.setTimeZone(TimeZone.getTimeZone("GMT"));
-        System.out.println("Local Time : " + localDateTime);
-        System.out.println("Time in GMT : " + s.format(localDateTime));
+        System.out.println(STR."Local Time : \{localDateTime}");
+        System.out.println(STR."Time in GMT : \{s.format(localDateTime)}");
 
         Instant now = Instant.now();
         ZonedDateTime zdt = ZonedDateTime.ofInstant(now, ZoneId.systemDefault());
-        System.out.println("Instant Local : " + zdt);
+        System.out.println(STR."Instant Local : \{zdt}");
 
         Instant instant = Instant.now();
-        System.out.println("Instant GMT : "+instant.toString());
+        System.out.println(STR."Instant GMT : \{instant.toString()}");
     }
 }

@@ -8,7 +8,7 @@ public class BigEndianLittleEndianApp {
     public static void main(String[] args) {
         ByteBuffer buffer = ByteBuffer.allocate(12);
         buffer.putInt(0x0000003b);
-        buffer.putLong(0xfb7126b2d8d5669cl);
+        buffer.putLong(0xfb7126b2d8d5669cL);
 
         buffer.flip();
         buffer.order(ByteOrder.LITTLE_ENDIAN);

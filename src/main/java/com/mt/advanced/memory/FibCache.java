@@ -15,11 +15,11 @@ public class FibCache {
     public String fCache(int n) {
 
         if (n < 0) {
-            throw new IllegalArgumentException(" " + n);
+            throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n <= 1) {
-            return "" + n;
+            return STR."\{n}";
         }
 
         String result = cache.get(n);
@@ -33,11 +33,11 @@ public class FibCache {
     public String fCacheInMethod(int n, Map<Integer, String> cache) {
 
         if (n < 0) {
-            throw new IllegalArgumentException(" " + n);
+            throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n <= 1) {
-            return "" + n;
+            return STR."\{n}";
         }
 
         String result = cache.get(n);
@@ -49,5 +49,4 @@ public class FibCache {
 
         return result;
     }
-
 }

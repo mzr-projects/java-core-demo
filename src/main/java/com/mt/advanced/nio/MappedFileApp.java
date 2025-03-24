@@ -21,7 +21,7 @@ public class MappedFileApp {
 
             /*
              * With this MappedByteBuffer we open a portion of the file, but here we give the whole length of
-             * the file to open, so we are opening the whole file.
+             * the file to open, so we're opening the whole file.
              * */
             MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, length);
 

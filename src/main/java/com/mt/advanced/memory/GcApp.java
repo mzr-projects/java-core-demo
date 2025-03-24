@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 /*
- * -Xmx : Maximum size of the java heap
- * -Xms : Initial size of the java heap
- * -Xss : Stack size of the java heap
+ * - Xmx : Maximum size of the java heap
+ * -Xms: Initial size of the java heap
+ * -Xss: Stack size of the java heap
  * */
 public class GcApp {
 
@@ -31,17 +31,17 @@ public class GcApp {
         //System.out.println("Time elapsed : " + (System.currentTimeMillis() - startTime) + "ms");
 
         System.out.println(fNonRecursive(40));
-        System.out.println("Time elapsed : " + (System.currentTimeMillis() - startTime) + "ms");
+        System.out.println(STR."Time elapsed : \{System.currentTimeMillis() - startTime}ms");
 
     }
 
     private static String f(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException(" " + n);
+            throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n <= 1) {
-            return "" + n;
+            return STR."\{n}";
         }
 
         BigInteger b1 = new BigInteger(f(n - 1));
@@ -53,7 +53,7 @@ public class GcApp {
     private static BigInteger fBI(int n) {
 
         if (n < 0) {
-            throw new IllegalArgumentException(" " + n);
+            throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n == 0) return BigInteger.ZERO;
@@ -68,7 +68,7 @@ public class GcApp {
     private static long fLong(int n) {
 
         if (n < 0) {
-            throw new IllegalArgumentException(" " + n);
+            throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n == 0) return 0;
@@ -88,7 +88,7 @@ public class GcApp {
     private static String fNonRecursive(int n) {
 
         if (n < 0) {
-            throw new IllegalArgumentException(" " + n);
+            throw new IllegalArgumentException(STR." \{n}");
         }
 
         BigInteger n0 = BigInteger.ZERO;

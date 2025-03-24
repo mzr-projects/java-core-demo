@@ -37,7 +37,7 @@ public class BufferApp {
             System.out.println((char) byteBuffer.get());
         }
 
-        System.out.println("The byteOrder in this machine is : " + nativeOrder());
+        System.out.println(STR."The byteOrder in this machine is : \{nativeOrder()}");
     }
 
     public static void channelCopy(ReadableByteChannel src, WritableByteChannel dst) throws IOException {
