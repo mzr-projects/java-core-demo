@@ -1,16 +1,16 @@
 package com.mt.concurrency.future;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class FutureApp {
-    
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+    public static void main(String[] args)
+        throws ExecutionException, InterruptedException {
         /*
          * The future is used to represent the result of asynchronous operation
          * */
@@ -29,7 +29,7 @@ public class FutureApp {
             }
         }
 
-        log.info(STR."Result of Future is : \{future.get()}");
+        //log.info(STR."Result of Future is : \{future.get()}");
         //futureExecutor.shutdown();
 
         SumCalculator sumCalculator = new SumCalculator();
@@ -43,6 +43,6 @@ public class FutureApp {
          * get() will block the execution until the task is complete but here the get() is called after making sure
          * the result is ready so we're good here
          * */
-        log.info(STR."Sum : \{integerFuture.get()}");
+        //log.info(STR."Sum : \{integerFuture.get()}");
     }
 }

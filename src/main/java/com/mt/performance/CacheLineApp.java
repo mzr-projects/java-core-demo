@@ -6,7 +6,6 @@ import java.time.Instant;
 public class CacheLineApp {
 
     public static void main(String[] args) {
-
         int[] array = new int[64 * 1024 * 1024];
         int k = 1;
 
@@ -14,7 +13,7 @@ public class CacheLineApp {
             long initTime = getNanoTime();
             array[i] *= 3;
             k = k * 2;
-            System.out.println(STR."k: \{k}, Time taken: \{getNanoTime() - initTime}");
+            //System.out.println(STR."k: \{k}, Time taken: \{getNanoTime() - initTime}");
         }
     }
 

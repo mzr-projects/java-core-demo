@@ -13,6 +13,6 @@ public class Train {
     }
 
     public void repair() {
-        System.out.println(STR."Repairing \{this}");
+        //System.out.println(STR."Repairing \{this}");
     }
 }

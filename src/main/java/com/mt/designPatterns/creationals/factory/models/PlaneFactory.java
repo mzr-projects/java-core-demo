@@ -6,7 +6,8 @@ import java.util.function.Supplier;
 
 public class PlaneFactory {
 
-    private static final Map<PlaneType, Supplier<Plane>> document = new HashMap<>();
+    private static final Map<PlaneType, Supplier<Plane>> document =
+        new HashMap<>();
 
     static {
         document.put(PlaneType.FIGHTER, FighterPlane::new);
@@ -14,7 +15,6 @@ public class PlaneFactory {
     }
 
     public static Plane build(PlaneType planeType) {
-
         /*
         switch (planeType) {
             case FIGHTER -> {
@@ -31,6 +31,8 @@ public class PlaneFactory {
             return plane.get();
         }
 
-        throw new IllegalArgumentException(STR."Unknown plane type:\{planeType.name()}");
+        throw new IllegalArgumentException(
+            "Unknown plane type: " + planeType.name()
+        );
     }
 }

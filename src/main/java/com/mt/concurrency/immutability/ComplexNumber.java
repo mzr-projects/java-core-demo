@@ -19,16 +19,22 @@ public final class ComplexNumber {
         this.imaginaryPart = imaginaryPart;
     }
 
-    public static ComplexNumber createComplexNumber(Integer realPart, Integer imaginePart) {
+    public static ComplexNumber createComplexNumber(
+        Integer realPart,
+        Integer imaginePart
+    ) {
         return new ComplexNumber(realPart, imaginePart);
     }
 
     public ComplexNumber add(ComplexNumber complexNumber) {
-        return new ComplexNumber(realPart + complexNumber.realPart,
-                imaginaryPart + complexNumber.imaginaryPart);
+        return new ComplexNumber(
+            realPart + complexNumber.realPart,
+            imaginaryPart + complexNumber.imaginaryPart
+        );
     }
 
     public String getValue() {
-        return STR."\{realPart} + \{imaginaryPart}i";
+        //return STR."\{realPart} + \{imaginaryPart}i";
+        return realPart + " + " + imaginaryPart + "i";
     }
 }

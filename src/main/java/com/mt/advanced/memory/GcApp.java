@@ -11,7 +11,6 @@ import java.math.BigInteger;
 public class GcApp {
 
     public static void main(String[] args) throws IOException {
-
         long startTime = System.currentTimeMillis();
 
         //System.out.println(f(40));
@@ -31,17 +30,16 @@ public class GcApp {
         //System.out.println("Time elapsed : " + (System.currentTimeMillis() - startTime) + "ms");
 
         System.out.println(fNonRecursive(40));
-        System.out.println(STR."Time elapsed : \{System.currentTimeMillis() - startTime}ms");
-
+        //System.out.println(STR."Time elapsed : \{System.currentTimeMillis() - startTime}ms");
     }
 
     private static String f(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException(STR." \{n}");
+            //throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n <= 1) {
-            return STR."\{n}";
+            //return STR."\{n}";
         }
 
         BigInteger b1 = new BigInteger(f(n - 1));
@@ -51,9 +49,8 @@ public class GcApp {
     }
 
     private static BigInteger fBI(int n) {
-
         if (n < 0) {
-            throw new IllegalArgumentException(STR." \{n}");
+            //throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n == 0) return BigInteger.ZERO;
@@ -66,9 +63,8 @@ public class GcApp {
     }
 
     private static long fLong(int n) {
-
         if (n < 0) {
-            throw new IllegalArgumentException(STR." \{n}");
+            //throw new IllegalArgumentException(STR." \{n}");
         }
 
         if (n == 0) return 0;
@@ -86,9 +82,8 @@ public class GcApp {
      * recursive solution
      * */
     private static String fNonRecursive(int n) {
-
         if (n < 0) {
-            throw new IllegalArgumentException(STR." \{n}");
+            //throw new IllegalArgumentException(STR." \{n}");
         }
 
         BigInteger n0 = BigInteger.ZERO;

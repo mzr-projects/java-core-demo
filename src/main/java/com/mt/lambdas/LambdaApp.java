@@ -1,10 +1,9 @@
 package com.mt.lambdas;
 
-import org.apache.commons.lang3.stream.Streams;
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import org.apache.commons.lang3.stream.Streams;
 
 public class LambdaApp {
 
@@ -15,7 +14,7 @@ public class LambdaApp {
     public static void main(String[] args) {
         LambdaApp lambdaApp = new LambdaApp();
 
-        System.out.println(STR."LambdaApp = \{lambdaApp}");
+        //System.out.println(STR."LambdaApp = \{lambdaApp}");
 
         lambdaApp.foo();
 
@@ -33,17 +32,18 @@ public class LambdaApp {
                     System.out.println("Hello World");
                 }
             };
-            System.out.println(STR."r1 = \{r1}");
+            //System.out.println(STR."r1 = \{r1}");
 
             //Runnable r2 = () -> System.out.println("Hello World");
-            Runnable r2 = () -> System.out.println(STR."Hello World \{r1}");
-            System.out.println(STR."r2 = \{r2}");
+            //Runnable r2 = () -> System.out.println(STR."Hello World \{r1}");
+            //System.out.println(STR."r2 = \{r2}");
         }
 
         /*
          * Here in the output we're going to get an object which implements serializable as well
          * */
-        Runnable r3 = (Runnable & Serializable & Cloneable) () -> System.out.println("Hello World");
+        Runnable r3 = (Runnable & Serializable & Cloneable) () ->
+            System.out.println("Hello World");
         System.out.println(Arrays.toString(r3.getClass().getInterfaces()));
 
         System.out.println("============== Train-Passenger");
@@ -60,12 +60,12 @@ public class LambdaApp {
     private void foo() {
         Runnable job = new Runnable() {
             public void run() {
-                System.out.println(STR."job in \{this}");
+                //System.out.println(STR."job in \{this}");
             }
         };
         job.run();
 
-        Runnable lJob = () -> System.out.println(STR."ljob in \{this}");
-        lJob.run();
+        //Runnable lJob = () -> System.out.println(STR."ljob in \{this}");
+        //lJob.run();
     }
 }

@@ -44,7 +44,7 @@ public class FJCalc extends RecursiveTask<Integer> {
         for (FJCalc task : tasks) {
             System.out.println(Thread.currentThread().getName());
             Collection<Integer> result = Collections.singleton(task.join());
-            System.out.println(STR."result is : \{result}");
+            //System.out.println(STR."result is : \{result}");
         }
     }
 }

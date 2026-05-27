@@ -1,9 +1,13 @@
 package com.mt.javacollections;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@Setter
+@Getter
 public class User implements Comparable<User> {
 
 	private String name;
@@ -44,19 +48,4 @@ public class User implements Comparable<User> {
 		return name.compareTo(u.getName());
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 }

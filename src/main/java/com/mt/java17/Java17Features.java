@@ -3,18 +3,16 @@ package com.mt.java17;
 import com.mt.java17.records.*;
 import com.mt.java17.sealed.Shape;
 import com.mt.java17.sealed.Square;
-import lombok.extern.slf4j.Slf4j;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Java17Features {
 
     public static void main(String[] args) {
-
         /*
          * We cannot set var to null because it needs to know the reference type of it but with var its not possible
          * for compiler to know
@@ -37,7 +35,7 @@ public class Java17Features {
          * */
 
         var i = 2;
-        log.info(STR."var i = \{i}");
+        //log.info(STR."var i = \{i}");
 
         var lambdaFunction = new Function<String, Integer>() {
             @Override
@@ -45,25 +43,24 @@ public class Java17Features {
                 return 2;
             }
         };
-        log.info(STR."Function in var : \{lambdaFunction.apply("2")}");
+        //log.info(STR."Function in var : \{lambdaFunction.apply("2")}");
 
         var string = """
-                select * from customers where name = 'MT'
-                and id = 1
-                """;
-        log.info(STR."Sql in string java 17 : \{string}");
+            select * from customers where name = 'MT'
+            and id = 1
+            """;
+        //log.info(STR."Sql in string java 17 : \{string}");
 
         /*
          * Records
          * */
-        record Customer(Integer id, String name) {
-        }
+        record Customer(Integer id, String name) {}
         var customer = new Customer(1, "Jimmy");
-        log.info(STR."Customer name is : \{customer.name} , Customer id is : \{customer.id}");
+        //log.info(STR."Customer name is : \{customer.name} , Customer id is : \{customer.id}");
 
         Set<RecordSample> sampleSet = getRecordSamples();
 
-        log.info(STR."Records is set : \{sampleSet}");
+        //log.info(STR."Records is set : \{sampleSet}");
 
         MarketOrder marketOrder = new MarketOrder(1, LocalDateTime.now());
         LimitOrder limitOrder = new LimitOrder(5, 34.87, LocalDateTime.now());
@@ -90,8 +87,8 @@ public class Java17Features {
 
         Object o = "It's a string";
         var msg = switch (o) {
-            case String ss -> STR."\{ss} is string";
-            case Integer ii -> STR."Integer : \{ii}";
+            // case String ss -> STR."\{ss} is string";
+            // case Integer ii -> STR."Integer : \{ii}";
             case null, default -> "Not String or Integer";
         };
 

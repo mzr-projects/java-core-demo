@@ -64,10 +64,10 @@ public class RaceConditionApp1 {
             t1.join(); // Wait here until t1 terminates
             t2.join(); // Wait here until t2 terminates
         } catch (Exception ex) {
-            System.out.println(STR."Exception: {}\{ex.getMessage()}");
+            //System.out.println(STR."Exception: {}\{ex.getMessage()}");
         }
 
-        System.out.println(STR."n = \{n}");
+        //System.out.println(STR."n = \{n}");
     }
 
     public static void main(String[] args) {

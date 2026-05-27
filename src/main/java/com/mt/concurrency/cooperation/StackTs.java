@@ -16,7 +16,8 @@ public class StackTs {
      * and we can't have one thread executing push and another executing pop at the same time
      * */
     public synchronized void push(int value) {
-        while ((top + 1) == CAPACITY) { // full ?
+        while ((top + 1) == CAPACITY) {
+            // full ?
             try {
                 /*
                  * Here thread is going to wait, it is using no resources, here we say wait indefinitely.
@@ -27,7 +28,7 @@ public class StackTs {
             }
         }
 
-        System.out.println(STR."\{value} pushed at \{top + 1}");
+        //System.out.println(STR."\{value} pushed at \{top + 1}");
         stack[++top] = value;
         /*
          * Here we notify all other threads that are waiting on the same lock
@@ -36,14 +37,15 @@ public class StackTs {
     }
 
     public synchronized void pop() {
-        while (top < 0) { // empty ?
+        while (top < 0) {
+            // empty ?
             try {
                 wait();
             } catch (InterruptedException e) {
                 System.err.println(e.getMessage());
             }
         }
-        System.out.println(STR."\{stack[top]} popped from \{top}");
+        //System.out.println(STR."\{stack[top]} popped from \{top}");
         top--;
         notifyAll();
     }

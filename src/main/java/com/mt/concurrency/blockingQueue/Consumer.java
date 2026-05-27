@@ -23,7 +23,7 @@ public class Consumer implements Runnable {
         try {
             for (int i = 0; i < maxTakes; i++) {
                 String s = queue.take();
-                System.out.println(STR."Message: \{s}");
+                //System.out.println(STR."Message: \{s}");
                 Thread.sleep(random.nextInt(1000));
             }
         } catch (InterruptedException e) {

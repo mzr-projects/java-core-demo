@@ -1,17 +1,16 @@
 package com.mt.advanced.nio;
 
-import com.mt.designPatterns.structural.flyweight.Pen;
+import static java.nio.ByteOrder.nativeOrder;
 
+import com.mt.designPatterns.structural.flyweight.Pen;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
-import static java.nio.ByteOrder.nativeOrder;
-
 public class BufferApp {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         /*
          * Write to a Buffer
          * */
@@ -37,10 +36,13 @@ public class BufferApp {
             System.out.println((char) byteBuffer.get());
         }
 
-        System.out.println(STR."The byteOrder in this machine is : \{nativeOrder()}");
+        //System.out.println(STR."The byteOrder in this machine is : \{nativeOrder()}");
     }
 
-    public static void channelCopy(ReadableByteChannel src, WritableByteChannel dst) throws IOException {
+    public static void channelCopy(
+        ReadableByteChannel src,
+        WritableByteChannel dst
+    ) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocateDirect(1024);
 
         /*

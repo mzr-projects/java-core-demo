@@ -19,33 +19,46 @@ public class SuperSimpleGCParser {
 
     public static void main(String... args) {
         if (args.length == 0) {
-            System.err.println("Usage: java SuperSimpleGCParser " +
-                    "filename1 filename2 ...\n" +
-                    "\tGC Log should be generated with just -Xloggc:filename");
+            System.err.println(
+                    "Usage: java SuperSimpleGCParser " +
+                            "filename1 filename2 ...\n" +
+                            "\tGC Log should be generated with just -Xloggc:filename"
+            );
             System.exit(1);
         }
 
-        System.out.println("Disclaimer: This is not a robust GC viewer.  " +
-                "Please use JClarity Censum for serious analysis.");
+        System.out.println(
+                "Disclaimer: This is not a robust GC viewer.  " +
+                        "Please use JClarity Censum for serious analysis."
+        );
         Stream.of(args).map(GCStatistics::new).forEach(System.out::println);
     }
 
     public static void showGCLogSummaryAtExit() {
         Optional<String> xloggc = VMArgsChecker.findVMArg("-Xlog:gc:");
-        String gclog = xloggc.orElseThrow(() -> new AssertionError("Please use -Xlog:gc:filename.vgc VM argument!"))
+        String gclog = xloggc
+                .orElseThrow(() ->
+                        new AssertionError(
+                                "Please use -Xlog:gc:filename.vgc VM argument!"
+                        )
+                )
                 .substring("-Xlog:gc:".length());
         Runtime.getRuntime().addShutdownHook(new Thread(() -> main(gclog)));
     }
 
-    private enum Type {YOUNG, OLD, UNDEFINED}
+    private enum Type {
+        YOUNG,
+        OLD,
+        UNDEFINED,
+    }
 
     private static class Event {
+
         private final Type type;
         private final long timestampInMilliseconds;
         private final long memoryBefore;
         private final long memoryAfter;
         private final double durationInSeconds;
-
 
         public Event(String line) {
             type = extractType(line);
@@ -111,6 +124,7 @@ public class SuperSimpleGCParser {
     }
 
     private static class GCStatistics {
+
         private final String filename;
         private final long durationOfLog;
         private final int numberOfGCs;
@@ -129,7 +143,14 @@ public class SuperSimpleGCParser {
         private final DoubleSummaryStatistics averageTimeInYoungGCs;
 
         public GCStatistics(String filename) {
-            try (Stream<String> lines = Files.lines(Paths.get(STR."B:\\SourceCodes\\Java\\java-core\\java-core-demo\\\{filename}"))) {
+            try (
+                    Stream<String> lines = Files.lines(
+                            Paths.get(
+                                    "B:\\SourceCodes\\Java\\java-core\\java-core-demo\\" +
+                                            filename
+                            )
+                    )
+            ) {
                 List<Event> events = lines
                         .toList()
                         .parallelStream()
@@ -157,21 +178,62 @@ public class SuperSimpleGCParser {
                     averageTimeInYoungGCs = new DoubleSummaryStatistics();
                 } else {
                     Event lastEvent = events.getLast();
-                    durationOfLog = (long) (lastEvent.timestampInMilliseconds + lastEvent.durationInSeconds * 1000);
+                    durationOfLog = (long) (lastEvent.timestampInMilliseconds +
+                            lastEvent.durationInSeconds * 1000);
                     numberOfGCs = events.size();
-                    numberOfYoungGCs = (int) events.stream().filter(Event::isYoung).count();
-                    numberOfOldGCs = (int) events.stream().filter(Event::isOld).count();
-                    numberOfUndefinedGCs = numberOfGCs - numberOfYoungGCs - numberOfOldGCs;
-                    memoryReclaimedDuringYoung = events.stream().filter(Event::isYoung).mapToLong(Event::getMemoryReclaimed).sum();
-                    memoryReclaimedDuringOld = events.stream().filter(Event::isOld).mapToLong(Event::getMemoryReclaimed).sum();
-                    timeInGCs = events.stream().mapToDouble(Event::getTimeInGC).sum();
-                    timeInYoungGCs = events.stream().filter(Event::isYoung).mapToDouble(Event::getTimeInGC).sum();
-                    averageTimeInYoungGCs = events.stream().filter(Event::isYoung).mapToDouble(Event::getTimeInGC).summaryStatistics();
-                    timeInOldGCs = events.stream().filter(Event::isOld).mapToDouble(Event::getTimeInGC).sum();
-                    maxHeapAfterGC = events.stream().mapToLong(Event::getHeapAfterGC).max().orElseThrow(AssertionError::new);
-                    totalMemoryAllocated = events.stream().mapToLong(Event::getMemoryReclaimed).sum() + lastEvent.getHeapAfterGC();
-                    averageCreationRate = (double) (totalMemoryAllocated * 1000) / durationOfLog;
-                    percentageOfTimeInGC = timeInGCs * 100000 / durationOfLog;
+                    numberOfYoungGCs = (int) events
+                            .stream()
+                            .filter(Event::isYoung)
+                            .count();
+                    numberOfOldGCs = (int) events
+                            .stream()
+                            .filter(Event::isOld)
+                            .count();
+                    numberOfUndefinedGCs =
+                            numberOfGCs - numberOfYoungGCs - numberOfOldGCs;
+                    memoryReclaimedDuringYoung = events
+                            .stream()
+                            .filter(Event::isYoung)
+                            .mapToLong(Event::getMemoryReclaimed)
+                            .sum();
+                    memoryReclaimedDuringOld = events
+                            .stream()
+                            .filter(Event::isOld)
+                            .mapToLong(Event::getMemoryReclaimed)
+                            .sum();
+                    timeInGCs = events
+                            .stream()
+                            .mapToDouble(Event::getTimeInGC)
+                            .sum();
+                    timeInYoungGCs = events
+                            .stream()
+                            .filter(Event::isYoung)
+                            .mapToDouble(Event::getTimeInGC)
+                            .sum();
+                    averageTimeInYoungGCs = events
+                            .stream()
+                            .filter(Event::isYoung)
+                            .mapToDouble(Event::getTimeInGC)
+                            .summaryStatistics();
+                    timeInOldGCs = events
+                            .stream()
+                            .filter(Event::isOld)
+                            .mapToDouble(Event::getTimeInGC)
+                            .sum();
+                    maxHeapAfterGC = events
+                            .stream()
+                            .mapToLong(Event::getHeapAfterGC)
+                            .max()
+                            .orElseThrow(AssertionError::new);
+                    totalMemoryAllocated =
+                            events
+                                    .stream()
+                                    .mapToLong(Event::getMemoryReclaimed)
+                                    .sum() +
+                                    lastEvent.getHeapAfterGC();
+                    averageCreationRate =
+                            (double) (totalMemoryAllocated * 1000) / durationOfLog;
+                    percentageOfTimeInGC = (timeInGCs * 100000) / durationOfLog;
                 }
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
@@ -179,25 +241,27 @@ public class SuperSimpleGCParser {
         }
 
         public String toString() {
-            return STR."""
-                        GCStatistics for \{filename}
-                        \tdurationOfLog=\{Duration.ofMillis(durationOfLog)}
-                        \tnumberOfGCs=\{numberOfGCs}
-                        \tnumberOfYoungGCs=\{numberOfYoungGCs}
-                        \tnumberOfOldGCs=\{numberOfOldGCs}\{numberOfUndefinedGCs > 0 ? STR."""
-                        \tnumberOfUndefinedGCs=\{numberOfUndefinedGCs}
-                        """ : ""}
-                        \tmemoryReclaimedDuringYoung=\{Memory.format(memoryReclaimedDuringYoung, Memory.KILOBYTES, 3)}
-                        \tmemoryReclaimedDuringOld=\{Memory.format(memoryReclaimedDuringOld, Memory.KILOBYTES, 3)}
-                        \tmaxHeapAfterGC=\{Memory.format(maxHeapAfterGC, Memory.KILOBYTES, 3)}
-                        \ttotalMemoryAllocated=\{Memory.format(totalMemoryAllocated, Memory.KILOBYTES, 3)}
-                        \taverageCreationRate=\{Memory.format(averageCreationRate, Memory.KILOBYTES, 2)}/s
-                        \ttimeInGCs=\{Duration.ofNanos((long) (timeInGCs * 1_000_000_000))}
-                        \ttimeInYoungGCs=\{Duration.ofNanos((long) (timeInYoungGCs * 1_000_000_000))}
-                        \taverageTimeInYoungGCs=\{averageTimeInYoungGCs}
-                        \ttimeInOldGCs=\{Duration.ofNanos((long) (timeInOldGCs * 1_000_000_000))}
-                        \tpercentageOfTimeInGC=\{String.format("%.2f%%", percentageOfTimeInGC)}
-                        """;
+            //return STR."""
+            //            GCStatistics for \{filename}
+            //            \tdurationOfLog=\{Duration.ofMillis(durationOfLog)}
+            //            \tnumberOfGCs=\{numberOfGCs}
+            //           \tnumberOfYoungGCs=\{numberOfYoungGCs}
+            //            \tnumberOfOldGCs=\{numberOfOldGCs}\{numberOfUndefinedGCs > 0 ? STR."""
+            //           \tnumberOfUndefinedGCs=\{numberOfUndefinedGCs}
+            //            """ : ""}
+            //            \tmemoryReclaimedDuringYoung=\{Memory.format(memoryReclaimedDuringYoung, Memory.KILOBYTES, 3)}
+            //            \tmemoryReclaimedDuringOld=\{Memory.format(memoryReclaimedDuringOld, Memory.KILOBYTES, 3)}
+            //            \tmaxHeapAfterGC=\{Memory.format(maxHeapAfterGC, Memory.KILOBYTES, 3)}
+            //            \ttotalMemoryAllocated=\{Memory.format(totalMemoryAllocated, Memory.KILOBYTES, 3)}
+            //            \taverageCreationRate=\{Memory.format(averageCreationRate, Memory.KILOBYTES, 2)}/s
+            //            \ttimeInGCs=\{Duration.ofNanos((long) (timeInGCs * 1_000_000_000))}
+            //            \ttimeInYoungGCs=\{Duration.ofNanos((long) (timeInYoungGCs * 1_000_000_000))}
+            //            \taverageTimeInYoungGCs=\{averageTimeInYoungGCs}
+            //            \ttimeInOldGCs=\{Duration.ofNanos((long) (timeInOldGCs * 1_000_000_000))}
+            //            \tpercentageOfTimeInGC=\{String.format("%.2f%%", percentageOfTimeInGC)}
+            //            """;
+
+            return null;
         }
     }
 }

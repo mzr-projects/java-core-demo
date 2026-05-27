@@ -3,7 +3,6 @@ package com.mt.concurrency.race.account;
 public class RaceConditionApp2 {
 
     public static void main(String[] args) {
-
         if (args.length < 1) {
             System.err.println("RunCondition <times to run>");
             return;
@@ -17,12 +16,12 @@ public class RaceConditionApp2 {
         spendThrift.start();
 
         try {
-            miser.join();       // Wait for miser to finish
+            miser.join(); // Wait for miser to finish
             spendThrift.join(); // Wait for spendThrift to finish
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
 
-        System.out.println(STR."Final Balance is : \{Account.balance}");
+        //System.out.println(STR."Final Balance is : \{Account.balance}");
     }
 }

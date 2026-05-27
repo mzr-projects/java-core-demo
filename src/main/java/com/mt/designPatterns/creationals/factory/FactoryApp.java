@@ -7,15 +7,14 @@ import com.mt.designPatterns.creationals.factory.models.PlaneType;
 public class FactoryApp {
 
     public static void main(String[] args) {
-
         Plane plane = PlaneFactory.build(PlaneType.PASSENGER);
         if (plane != null) {
-            System.out.println(STR."Plane(1) model is : \{plane.getModel()}");
+            //System.out.println(STR."Plane(1) model is : \{plane.getModel()}");
         }
 
         Plane plane1 = PlaneFactory.build(PlaneType.FIGHTER);
         if (plane1 != null) {
-            System.out.println(STR."Plane(2) model is : \{plane1.getModel()}");
+            //System.out.println(STR."Plane(2) model is : \{plane1.getModel()}");
         }
     }
 }

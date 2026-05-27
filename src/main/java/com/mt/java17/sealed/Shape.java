@@ -5,6 +5,6 @@ package com.mt.java17.sealed;
  * */
 public sealed interface Shape permits Circle, Rectangle {
     default void identify() {
-        System.out.println(STR."I am a \{getClass().getName()}");
+        // System.out.println(STR."I am a \{getClass().getName()}");
     }
 }

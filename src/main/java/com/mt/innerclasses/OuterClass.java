@@ -30,8 +30,11 @@ public class OuterClass {
      * static inner class can not access non-static attributes
      */
     public static class InnerStaticClass {
+
         public void innerStaticMethod() {
-            System.out.println("Static inner class can not access non static attributes");
+            System.out.println(
+                "Static inner class can not access non static attributes"
+            );
         }
     }
 
@@ -39,8 +42,9 @@ public class OuterClass {
      * Inner class has access to private attributes and methods of outer class
      */
     private class PrivateInner {
+
         public void innerPrivateMethod() {
-            System.out.println("Inner method access to outer class attributes, age : " + age + ", name :" + name);
+            //  System.out.println(STR."Inner method access to outer class attributes, age : \{age}, name :\{name}");
         }
     }
 
@@ -48,7 +52,7 @@ public class OuterClass {
 
         private String name;
 
-        public void setName(String name){
+        public void setName(String name) {
             this.name = name;
         }
 
@@ -58,8 +62,7 @@ public class OuterClass {
          * @param name Name of public-inner-class
          */
         public void innerPublicMethod(String name) {
-            System.out.println("Inner method access to outer class attributes, age : " + age + ", name :" + this.name +
-                    ", this.name :" + OuterClass.this.name);
+            //System.out.println(STR."Inner method access to outer class attributes, age : \{age}, name :\{this.name}, this.name :\{OuterClass.this.name}");
         }
     }
 }
